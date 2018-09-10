@@ -238,7 +238,8 @@ void MainWindow::streamImages()
         return;
     }
 
-    QString output_dir = "/local_disk/schulz/output/";
+    // CHANGE THIS TO YOUR OUTPUT FOLDER
+    QString output_dir = "/tmp/carla_output/"; 
 
     ui->statusBar->showMessage("Status: streaming...");
     repaint();
