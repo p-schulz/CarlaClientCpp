@@ -19,4 +19,5 @@ A C++ client for Unreal Engine 4 running carla.
 ### TODO
  - [X] fetch user parameters through GUI 
  - [X] record simulation data
+ - [ ] move streaming to different thread (not blocking GUI)
  - [ ] add stop/disconnect feature
