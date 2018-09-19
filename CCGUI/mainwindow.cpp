@@ -72,6 +72,7 @@ std::string MainWindow::getSceneDescription(std::string settings_dir)
         level_values << m_settings->value(childKey).toString();
     m_settings->endGroup();
 
+    // TODO: fetch more than one sensor
     m_settings->beginGroup("CARLA/Sensor");
     QStringList sensors_keys = m_settings->childKeys();
     QStringList sensors_values;
@@ -125,9 +126,22 @@ void MainWindow::setSceneDescription()
     config.write("\nWeatherId=");                   config.write(getSimText(11).data());
     config.write("\nSeedVehicles=");                config.write(getSimText(12).data());
     config.write("\nSeedPedestrians=");             config.write(getSimText(13).data());
+
+    // TODO: generate sensor definitions
     config.write("\n\n[CARLA/Sensor]");
-    config.write("\nSensors=");                     config.write(getSimText(16).data());
-    config.write("\n\n[CARLA/Sensor/RGB01]");
+    QString t_num_sensors = getSimText(16).data();
+    int num_sensors = t_num_sensors.toInt();
+
+    // TODO: reorder sensors
+    config.write("\nSensors=");                     //config.write(getSimText(16).data());
+    if(num_sensors == 1)
+        config.write("Sensor1");
+    if(num_sensors == 2)
+        config.write("Sensor2,Sensor1");
+    if(num_sensors == 3)
+        config.write("Sensor3,Sensor2,Sensor1");
+
+    config.write("\n\n[CARLA/Sensor/Sensor1"); config.write("]");
     config.write("\nSensorName=");                  config.write(getSimText(18).data());
     config.write("\nSensorType=");                  config.write(getSimText(19).data());
     config.write("\nPostProcessing=");              config.write(getSimText(20).data());
@@ -140,13 +154,51 @@ void MainWindow::setSceneDescription()
     config.write("\nRotationPitch=");               config.write(getSimText(27).data());
     config.write("\nRotationRoll=");                config.write(getSimText(28).data());
     config.write("\nRotationYaw=");                 config.write(getSimText(29).data());
+    // row 39
+    if(num_sensors > 1) {
+        config.write("\n\n[CARLA/Sensor/Sensor2"); config.write("]");
+        config.write("\nSensorName=");                  config.write(getSimText(40).data());
+        config.write("\nSensorType=");                  config.write(getSimText(41).data());
+        config.write("\nPostProcessing=");              config.write(getSimText(42).data());
+        config.write("\nFOV=");                         config.write(getSimText(43).data());
+        config.write("\nImageSizeX=");                  config.write(getSimText(44).data());
+        config.write("\nImageSizeY=");                  config.write(getSimText(45).data());
+        config.write("\nPositionX=");                   config.write(getSimText(46).data());
+        config.write("\nPositionY=");                   config.write(getSimText(47).data());
+        config.write("\nPositionZ=");                   config.write(getSimText(48).data());
+        config.write("\nRotationPitch=");               config.write(getSimText(49).data());
+        config.write("\nRotationRoll=");                config.write(getSimText(50).data());
+        config.write("\nRotationYaw=");                 config.write(getSimText(51).data());
+    }
+    // row 52
+    if(num_sensors > 2) {
+        config.write("\n\n[CARLA/Sensor/Sensor3"); config.write("]");
+        config.write("\nSensorName=");                  config.write(getSimText(53).data());
+        config.write("\nSensorType=");                  config.write(getSimText(54).data());
+        config.write("\nPostProcessing=");              config.write(getSimText(55).data());
+        config.write("\nFOV=");                         config.write(getSimText(56).data());
+        config.write("\nImageSizeX=");                  config.write(getSimText(57).data());
+        config.write("\nImageSizeY=");                  config.write(getSimText(58).data());
+        config.write("\nPositionX=");                   config.write(getSimText(59).data());
+        config.write("\nPositionY=");                   config.write(getSimText(60).data());
+        config.write("\nPositionZ=");                   config.write(getSimText(61).data());
+        config.write("\nRotationPitch=");               config.write(getSimText(62).data());
+        config.write("\nRotationRoll=");                config.write(getSimText(63).data());
+        config.write("\nRotationYaw=");                 config.write(getSimText(64).data());
+    }
 
     config.close();
+    // immidiatly load the dumped settings
     scene_description = getSceneDescription("current.ini");
 
-    // add sensor to client, TODO: remove hardcoded values
-    c_client->addSensor("RGB01", 0, 90, 800, 600, 0.3f, 0.f, 0.f, 0.f, 0.f, 0.f);
-
+    // add sensor to client
+    // TODO: remove hardcoded values
+    c_client->addSensor("Sensor1", 0, 90, 800, 600, 0.3f, 0.f, 0.f, 0.f, 0.f, 0.f);
+    if(num_sensors > 1)
+        c_client->addSensor("Sensor2", 0, 90, 800, 600, 0.3f, 0.f, 0.f, 0.f, 0.f, 0.f);
+    if(num_sensors > 2)
+        c_client->addSensor("Sensor3", 0, 90, 800, 600, 0.3f, 0.f, 0.f, 0.f, 0.f, 0.f);
+    //c_client->sim_params.number_of_sensors = num_sensors;
 }
 
 QString MainWindow::getSimString(int row)
@@ -203,7 +255,7 @@ bool MainWindow::setup()
 bool MainWindow::connectUE()
 {
     c_client->close();
-    connection = c_client->run(scene_description, 5); // 47
+    connection = c_client->run(scene_description, 0); // 47
     if(!connection) {
         ui->statusBar->showMessage("Status: connection failed");
         repaint();
@@ -225,6 +277,12 @@ bool MainWindow::connectUE()
     return true;
 }
 
+
+/*****************************************************************************************************/
+/*                                                                                                   */
+/* TODO (major): move everything to different thread, as the GUI is unresponsive during streaming */
+/*                                                                                                   */
+/*****************************************************************************************************/
 void MainWindow::streamImages()
 {
     if(!init)
@@ -238,8 +296,8 @@ void MainWindow::streamImages()
         return;
     }
 
-    // CHANGE THIS TO YOUR OUTPUT FOLDER
-    QString output_dir = "/tmp/carla_output/"; 
+    //QString output_dir = "/local_disk/schulz/output/";
+    QString output_dir = ui->lineEdit->text();
 
     ui->statusBar->showMessage("Status: streaming...");
     repaint();
@@ -335,7 +393,7 @@ void MainWindow::streamImages()
                     QFile npc_data; npc_data.setFileName(QString("vehicle-" + QString::number(i)));
                     npc_data.open(QIODevice::WriteOnly);
                     npc_data.write("POS: ");
-                    // TODO: write data to file
+                    // TODO: write data to file, best kitti formatted
                 }
             }
             if(measurements.non_player_agents(i).has_speed_limit_sign())
@@ -404,10 +462,11 @@ void MainWindow::streamImages()
                     prefix = "000";
                 if(frame > 999)
                     prefix = "00";
-                QString filename_img = output_dir + "RGB-01_img" + prefix + QString::number(frame) + ".png";
+                QString filename_img = output_dir + "sensor1_img" + prefix + QString::number(frame) + ".png";
                 output_img1->save(filename_img, "PNG", -1);
             }
 
+            // TODO: move this from the GUI-Thread, as it is unresponsive during streaming
             ui->SENSOR_IMG01->setPixmap(QPixmap::fromImage(*output_img1));
             free (img_buffer);
         }
@@ -449,11 +508,11 @@ void MainWindow::streamImages()
                     prefix = "000";
                 if(frame > 999)
                     prefix = "00";
-                QString filename_img = output_dir + "RGB-02_img" + prefix + QString::number(frame) + ".png";
+                QString filename_img = output_dir + "sensor2_img" + prefix + QString::number(frame) + ".png";
                 output_img2->save(filename_img, "PNG", -1);
             }
 
-            ui->SENSOR_IMG02->setPixmap(QPixmap::fromImage(*output_img2));
+            //ui->SENSOR_IMG02->setPixmap(QPixmap::fromImage(*output_img2));
             free (img_buffer);
         }
 
@@ -495,18 +554,18 @@ void MainWindow::streamImages()
                     prefix = "000";
                 if(frame > 999)
                     prefix = "00";
-                QString filename_img = output_dir + "DEPTH_img" + prefix + QString::number(frame) + ".png";
+                QString filename_img = output_dir + "sensor3_img" + prefix + QString::number(frame) + ".png";
                 output_img3->save(filename_img, "PNG", -1);
             }
 
-            ui->SENSOR_IMG03->setPixmap(QPixmap::fromImage(*output_img3));
+            //ui->SENSOR_IMG03->setPixmap(QPixmap::fromImage(*output_img3));
             free (img_buffer);
         }
 
         // update UI
         ui->lcdNumber_frame->display(static_cast<int>(frame));
         ui->lcdNumber_frame_2->display(static_cast<double>(frame_no / 20));
-        ui->lcdNumber_frame_2->update();
+        //ui->lcdNumber_frame_2->update();
         repaint();
 
         // advance to next frame
@@ -557,7 +616,7 @@ void MainWindow::on_actionExit_triggered()
     QApplication::quit();
 }
 
-// TODO
+// TODO?
 void MainWindow::on_actionAbout_triggered()
 {
 

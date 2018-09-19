@@ -173,7 +173,7 @@
          </row>
          <row>
           <property name="text">
-           <string>Sensor #1</string>
+           <string>Sensor1</string>
           </property>
           <property name="font">
            <font>
@@ -293,6 +293,150 @@
          <row>
           <property name="text">
            <string>Rate (points/second, lidar only)</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Sensor2</string>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+            <underline>true</underline>
+           </font>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>SensorName</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Sensor type</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Post processing</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Field of view</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Image width</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Image height</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Position X</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Position Y</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Position Z</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Rotation X (Roll)</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Rotation Y (Pitch)</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Rotation Z (Yaw)</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Sensor3</string>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+            <underline>true</underline>
+           </font>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>SensorName</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Sensor type</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Post processing</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Field of view</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Image width</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Image height</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Position X</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Position Y</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Position Z</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Rotation X (Roll)</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Rotation Y (Pitch)</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>Rotation Z (Yaw)</string>
           </property>
          </row>
          <column>
@@ -438,7 +582,7 @@
          </item>
          <item row="16" column="0">
           <property name="text">
-           <string>RGB01</string>
+           <string>3</string>
           </property>
          </item>
          <item row="17" column="0">
@@ -451,7 +595,7 @@
          </item>
          <item row="18" column="0">
           <property name="text">
-           <string>RGB01</string>
+           <string>Sensor1</string>
           </property>
          </item>
          <item row="19" column="0">
@@ -481,7 +625,7 @@
          </item>
          <item row="24" column="0">
           <property name="text">
-           <string>0.2</string>
+           <string>0.3</string>
           </property>
          </item>
          <item row="25" column="0">
@@ -491,7 +635,7 @@
          </item>
          <item row="26" column="0">
           <property name="text">
-           <string>1.3</string>
+           <string>1.5</string>
           </property>
          </item>
          <item row="27" column="0">
@@ -501,10 +645,170 @@
          </item>
          <item row="28" column="0">
           <property name="text">
-           <string>8</string>
+           <string>0</string>
           </property>
          </item>
          <item row="29" column="0">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item row="31" column="0">
+          <property name="text">
+           <string>152</string>
+          </property>
+         </item>
+         <item row="32" column="0">
+          <property name="text">
+           <string>200</string>
+          </property>
+         </item>
+         <item row="33" column="0">
+          <property name="text">
+           <string>15</string>
+          </property>
+         </item>
+         <item row="34" column="0">
+          <property name="text">
+           <string>12</string>
+          </property>
+         </item>
+         <item row="35" column="0">
+          <property name="text">
+           <string>120</string>
+          </property>
+         </item>
+         <item row="36" column="0">
+          <property name="text">
+           <string>1300</string>
+          </property>
+         </item>
+         <item row="37" column="0">
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+         <item row="38" column="0">
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+         <item row="40" column="0">
+          <property name="text">
+           <string>Sensor2</string>
+          </property>
+         </item>
+         <item row="41" column="0">
+          <property name="text">
+           <string>CAMERA</string>
+          </property>
+         </item>
+         <item row="42" column="0">
+          <property name="text">
+           <string>SceneFinal</string>
+          </property>
+         </item>
+         <item row="43" column="0">
+          <property name="text">
+           <string>90</string>
+          </property>
+         </item>
+         <item row="44" column="0">
+          <property name="text">
+           <string>800</string>
+          </property>
+         </item>
+         <item row="45" column="0">
+          <property name="text">
+           <string>600</string>
+          </property>
+         </item>
+         <item row="46" column="0">
+          <property name="text">
+           <string>0.3</string>
+          </property>
+         </item>
+         <item row="47" column="0">
+          <property name="text">
+           <string>-0.3</string>
+          </property>
+         </item>
+         <item row="48" column="0">
+          <property name="text">
+           <string>1.5</string>
+          </property>
+         </item>
+         <item row="49" column="0">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item row="50" column="0">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item row="51" column="0">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item row="53" column="0">
+          <property name="text">
+           <string>Sensor3</string>
+          </property>
+         </item>
+         <item row="54" column="0">
+          <property name="text">
+           <string>Camera</string>
+          </property>
+         </item>
+         <item row="55" column="0">
+          <property name="text">
+           <string>Depth</string>
+          </property>
+         </item>
+         <item row="56" column="0">
+          <property name="text">
+           <string>90</string>
+          </property>
+         </item>
+         <item row="57" column="0">
+          <property name="text">
+           <string>800</string>
+          </property>
+         </item>
+         <item row="58" column="0">
+          <property name="text">
+           <string>600</string>
+          </property>
+         </item>
+         <item row="59" column="0">
+          <property name="text">
+           <string>0.3</string>
+          </property>
+         </item>
+         <item row="60" column="0">
+          <property name="text">
+           <string>0.3</string>
+          </property>
+         </item>
+         <item row="61" column="0">
+          <property name="text">
+           <string>1.5</string>
+          </property>
+         </item>
+         <item row="62" column="0">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item row="63" column="0">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item row="64" column="0">
           <property name="text">
            <string>0</string>
           </property>
@@ -668,7 +972,14 @@
        <item>
         <widget class="QCheckBox" name="checkBox">
          <property name="text">
-          <string>save simulation data to disk</string>
+          <string>save simulation data to folder:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="text">
+          <string>/local_disk/schulz/output/</string>
          </property>
         </widget>
        </item>
@@ -696,7 +1007,7 @@
        <number>8</number>
       </property>
       <property name="value" stdset="0">
-       <double>9876.986999999999171</double>
+       <double>9877.000000000000000</double>
       </property>
       <property name="intValue" stdset="0">
        <number>9877</number>
@@ -798,6 +1109,19 @@
      <attribute name="title">
       <string>Info</string>
      </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>330</y>
+        <width>241</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nothing here for the moment... =(</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

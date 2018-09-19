@@ -67,6 +67,21 @@ typedef struct {
     int type;
 } GENERIC_OBJECT;
 
+typedef struct {
+    QString name;
+    QString type;
+    QString postp;
+    float FOV;
+    int width;
+    int height;
+    float x;
+    float y;
+    float z;
+    float pitch;
+    float roll;
+    float yaw;
+} SENSOR_DEF;
+
 
     explicit MainWindow(QWidget *parent = nullptr);
     void updateRGB(QPixmap img);
