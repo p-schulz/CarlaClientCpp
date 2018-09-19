@@ -4,13 +4,13 @@ A C++ client for Unreal Engine 4 running carla.
 ### Setup
 
 - Change dir to libs/protobuf and run ./autogen.sh
-- Run ./configure --prefix=$DIR/carla_cpp_client/libs/protobuf
+- Run ./configure --prefix=$DIR/CarlaClientCpp/libs/protobuf
 - Run make && make install
 
 ### Compiling
 
 - Be sure to have QtCreator and boost installed
-- Open the .pro file and hit F5 (or make all)
+- Open the .pro file inside folder CCGUI and hit F5 (or make all)
 
 ### Usage
 - Copy the CarlaSettings.ini into your build directory (add or remove sensors there)
