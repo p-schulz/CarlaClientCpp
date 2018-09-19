@@ -193,6 +193,7 @@ void MainWindow::setSceneDescription()
 
     // add sensor to client
     // TODO: remove hardcoded values
+    c_client->clearSensors();
     c_client->addSensor("Sensor1", 0, 90, 800, 600, 0.3f, 0.f, 0.f, 0.f, 0.f, 0.f);
     if(num_sensors > 1)
         c_client->addSensor("Sensor2", 0, 90, 800, 600, 0.3f, 0.f, 0.f, 0.f, 0.f, 0.f);

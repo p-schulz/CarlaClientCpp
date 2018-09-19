@@ -108,6 +108,9 @@ public:
                        float pos_y, float pos_z, float rot_x, float rot_y,
                        float rot_z);
 
+        //! remove all sensors currently active
+        void clearSensors();
+
         //! send request and start sim using sockets
         bool run(std::string ini_file, uint32_t startpos);
 

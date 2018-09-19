@@ -67,6 +67,12 @@ void CarlaClient::addSensor(std::string sensor_name, uint32_t sensor_type, float
     sim_params.number_of_sensors = (sim_params.sensors.size());
 }
 
+void CarlaClient::clearSensors()
+{
+    sim_params.number_of_sensors = 0;
+    sim_params.sensors.clear();
+}
+
 bool CarlaClient::run(std::string ini_file, uint32_t startpos) {
 
     try {
