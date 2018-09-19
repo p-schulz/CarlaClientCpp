@@ -14,7 +14,9 @@ A C++ client for Unreal Engine 4 running carla.
 
 ### Usage
 - Copy the CarlaSettings.ini into your build directory (add or remove sensors there)
+- (optional) copy the file OFFLINE.png to the build directory
 - Run Carla and press the "Start" button for a quick startup
+- If you make some changes to the sim params inside the GUI you also need to select File->SaveConfiguration
 
 ### TODO
  - [X] fetch user parameters through GUI 
